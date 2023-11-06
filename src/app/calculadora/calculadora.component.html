@@ -1,0 +1,77 @@
+
+      <div class="mi-div shadow p-3 mb-5 bg-body rounded">
+        <div class="btn-group d-flex justify-content-center p-2">
+          <label *ngFor="let opcion of opcionesEdad" class="btn" [class.btn-primary]="opcion === edad"
+            [class.btn-secondary]="opcion !== edad">
+            <input type="radio" [(ngModel)]="edad" [value]="opcion" (click)="opcionesDatos[0]=true"> {{ opcion }}
+          </label>
+        </div>
+        <div *ngIf="opcionesDatos[0]==true">
+          <div>
+            <label for="pesoInput">Peso</label>
+            <div class="d-flex flex-row">
+              <small *ngIf="enLibras" class="form-text text-muted">En libras</small>
+              <small *ngIf="enKilos" class="form-text text-muted">En kilogramos</small>
+            </div>
+            <input type="number" class="form-control" [(ngModel)]="valorNumerico" (input)="validarInput($event)"
+              placeholder="Peso">
+            <div class="d-flex flex-row-reverse">
+              <div class="d-flex flex-row bd-highlight mb-3 gap-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" (click)="cambiarALibras()"
+                    checked>
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Libras
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" (click)="cambiarAKilos()">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Kilogramos
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="opcionesDatos[1]">
+          <div>
+            <div class="d-flex justify-content-center p-2">
+              <label class="btn btn-outline-primary">
+                <input type="checkbox" [(ngModel)]="opcionesSintomas[0]" (change)="comprobar()"> Dolor
+              </label>
+              <label class="btn btn-outline-primary">
+                <input type="checkbox" [(ngModel)]="opcionesSintomas[1]" (change)="comprobar()"> Picazon
+              </label>
+              <label class="btn btn-outline-primary">
+                <input type="checkbox" [(ngModel)]="opcionesSintomas[2]" (change)="comprobar()"> Reguetonero
+              </label>
+            </div>
+            <div class="d-flex justify-content-center p-2">
+              <label class="btn btn-outline-primary">
+                <input type="checkbox" [(ngModel)]="opcionesSintomas[3]" (change)="comprobar()"> Hinchazon
+              </label>
+              <label class="btn btn-outline-primary">
+                <input type="checkbox" [(ngModel)]="opcionesSintomas[4]" (change)="comprobar()"> Debilidad
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="prueba == true" class="d-flex justify-content-center p-2">
+          <button type="button" class="btn btn-primary btn-lg" (click)="hazAlgo()">Calcular</button>
+        </div>
+
+        <div *ngIf="diagnostico" class="p-5">
+          <h2 class="text-center">
+            <i class="bi bi-clipboard2-pulse"></i> Dosis:
+          </h2>
+          <div *ngIf="reguetonero">
+            <p class="fs-5 text-muted text-center">No hay cura<i class="bi bi-emoji-frown"></i></p>
+
+          </div>
+          <div *ngIf="!reguetonero">
+            <p class="fs-5 text-muted text-center">halotano 10 cartuchos<i class="bi bi-emoji-laughing"></i></p>
+          </div>
+        </div>
+      </div>

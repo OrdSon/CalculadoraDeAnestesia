@@ -1,0 +1,30 @@
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+}
+.bg{
+  padding: 4vw;
+  background: rgb(98,188,255);
+  background: linear-gradient(159deg, rgba(98,188,255,1) 0%, rgba(27,154,159,1) 38%, rgba(44,43,140,1) 75%, rgba(2,0,36,1) 100%); 
+}
+
+.container-fluid {
+  flex: 1;
+}
+
+.sticky-footer {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  color:white;
+}
+
+h1{
+  color:whitesmoke;
+}
+
+.white{
+  color:white;
+}
